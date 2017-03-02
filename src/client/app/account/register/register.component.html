@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6">
+        <div>Become a seller</div>
+        <ul class="list-unstyled" style="line-height: 2">
+          <li><span class="glyphicon glyphicon-ok"></span> See all your orders</li>
+          <li><span class="glyphicon glyphicon-ok"></span> Fast re-order</li>
+          <li><span class="glyphicon glyphicon-ok"></span> Save your favorites</li>
+          <li><span class="glyphicon glyphicon-ok"></span> Fast checkout</li>
+          <li><span class="glyphicon glyphicon-ok"></span> Get a gift <small>(only new customers)</small></li>
+          <li><a href="#"><u>Read more</u></a></li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <form [formGroup]="registerForm" novalidate autocomplete="off" (ngSubmit)="onRegister()" class="form-signin">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address*</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password*</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+          </div>
+          <div class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                {{role}}
+                <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a (click)="changeRole('Buyer')">Buyer</a></li>
+                <li><a (click)="changeRole('Seller')">Seller</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clearfix" style="margin-bottom: 5px">
+            <small *ngIf="errorMessage != null" class="text-danger">{{errorMessage}}</small>
+          </div>
+
+          <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary btn-lg btn-signup">Create my account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

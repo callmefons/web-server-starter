@@ -1,0 +1,46 @@
+<!--<h1>Admin Component</h1>-->
+<!--<button class="pull-right" (click)="onRouter('create')">Create New Admin!</button>-->
+<!--<h1>Users</h1>-->
+<!--<ul *ngIf="users">-->
+  <!--<li *ngFor="let user of users">-->
+    <!--<a (click)="onSelect(user)">{{user.name}}</a>-->
+    <!--<a *ngIf="selectedUser == user" (click)="gotoDetail(user.user_id)">View Details</a>-->
+  <!--</li>-->
+<!--</ul>-->
+
+
+<div class="container">
+  <div class="row">
+    <h2>Seller Panel</h2>
+  </div>
+
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table ">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th class="text-center">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users" class="{{selectedUser == user ? 'active': ''}}" (click)="onSelect(user)">
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.role}}</td>
+          <td><span class="label label-{{user.active ? 'success': 'default'}}">{{user.active ? 'Active': 'Inactive'}}</span>
+          <td class="text-center"><a class='btn  btn-info btn-xs' (click)="gotoDetail(user.user_id)"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
+
+

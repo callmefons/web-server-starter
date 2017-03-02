@@ -1,0 +1,80 @@
+
+
+<div class="container" *ngIf="user">
+
+  <div class="row">
+    <h2>General Account Settings</h2>
+
+    <div class="row">
+      <div class="alert alert-success" *ngIf="dismissable">
+        <strong>Success!</strong> {{msgPassword}}
+      </div>
+    </div>
+
+    <hr>
+
+    <div style="margin-bottom: 15px">
+      <div class="pull-right">
+        <button class="btn btn-danger" style="margin-right: 5px" (click)="onDeactivateAccount()">Deactivate</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+
+  <!-- edit form column -->
+  <div class="col-md-12 personal-info">
+
+    <form [formGroup]="updatePasswordForm" novalidate autocomplete="off" class="form-horizontal" style="max-width: 550px; margin: 0 auto">
+      <div class="form-group">
+        <label for="inputOldPassword" class="col-sm-2 control-label">Current</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="Email" id="inputOldPassword" formControlName="oldPassword">
+          <div class="clearfix" style="margin-bottom: 5px">
+            <small *ngIf="errorMessage != null" class="text-danger">{{errorMessage}}</small>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputNewPassword" class="col-sm-2 control-label">New</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="Email" id="inputNewPassword"
+                 formControlName="newPassword">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button
+            [disabled]="!updatePasswordForm.valid"
+            type="button" (click)="onUpdatePassword()"
+            class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="myModal" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Deactivate Account</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Deactivating your account will disable your profile and remove your name and photo from most things you've shared on Website.
+          Some information may still be visible to others, such as your name in their friends list and messages you sent.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="DeactivateAccount()">Deactivate</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

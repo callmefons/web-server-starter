@@ -1,0 +1,19 @@
+
+.jumbotron{
+  background-color: #F7F7F7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+}
+
+
+.btn.btn-signup {
+  background-color: rgb(59, 89, 152);
+}
+
+
+.btn.btn-signup:hover,
+.btn.btn-signup:active,
+.btn.btn-signup:focus {
+  background-color: rgb(59, 89, 152);
+}

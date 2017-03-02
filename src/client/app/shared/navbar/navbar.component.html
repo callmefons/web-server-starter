@@ -1,0 +1,23 @@
+<nav>
+  <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">HOME</a>
+  <a [routerLink]="['/about']" [routerLinkActive]="['router-link-active']"
+     [routerLinkActiveOptions]="{exact:true}"
+     *ngIf="_authService.isLoggedIn()">About</a>
+  <a [routerLink]="['/setting']" [routerLinkActive]="['router-link-active']"
+     [routerLinkActiveOptions]="{exact:true}"
+     *ngIf="_authService.isLoggedIn()">Setting</a>
+
+  <a *ngIf="_authService.checkRole('Seller')" [routerLink]="['/seller']" [routerLinkActive]="['router-link-active']"
+     [routerLinkActiveOptions]="{exact:true}">Seller</a>
+  <a *ngIf="_authService.checkRole('Admin')" [routerLink]="['/admin']" [routerLinkActive]="['router-link-active']"
+     [routerLinkActiveOptions]="{exact:true}">Admin</a>
+
+
+
+  <a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"
+      *ngIf="!_authService.isLoggedIn()" style="float: right">Login</a>
+  <a (click)="logout()" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"
+     *ngIf="_authService.isLoggedIn()" style="float: right">Logout</a>
+  <a *ngIf="!_authService.isLoggedIn()" [routerLink]="['/register']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"
+     style="float: right">Register</a>
+</nav>

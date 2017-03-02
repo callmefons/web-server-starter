@@ -1,0 +1,92 @@
+<div class="container" *ngIf="user">
+  <div class="row">
+    <h2 style="margin-bottom: 15px">Edit user profile</h2>
+    <hr>
+
+    <div class="row">
+      <div class="alert alert-success" *ngIf="dismissable">
+        <strong>Success!</strong> {{popupMessage}}.
+      </div>
+    </div>
+
+
+    <div style="margin-bottom: 15px">
+      <button class="btn btn-default" (click)="goBack()"> <span class="glyphicon glyphicon-chevron-left"></span> Back</button>
+      <div class="pull-right">
+        <button class="btn btn-primary" style="margin-right: 5px" (click)="onEditUser()" [disabled]="!editUserForm.valid">Save</button>
+        <button class="btn btn-danger" (click)="onDeleteUser()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+
+  <form class="form-horizontal" [formGroup]="editUserForm" novalidate autocomplete="off">
+    <fieldset>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="user_id">User ID</label>
+        <div class="col-md-4">
+          <label class="control-label" id="user_id">{{user.user_id}}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="email">Email</label>
+        <div class="col-md-4">
+          <label class="control-label" id="email">{{user.email}}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="createAt">Created</label>
+        <div class="col-md-4">
+          <label class="control-label" id="createAt">{{user.createdAt}}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="updatedAt">Last change</label>
+        <div class="col-md-4">
+          <label class="control-label" id="updatedAt">{{user.updatedAt}}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="role">Role</label>
+        <div class="col-md-4">
+          <label class="control-label" id="role">{{user.role}}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="inputName">Name</label>
+        <div class="col-md-4">
+          <input id="inputName" name="inputName" type="text" placeholder="Name" class="form-control input-md" [(ngModel)]="user.name" formControlName="name">
+        </div>
+      </div>
+
+
+    </fieldset>
+  </form>
+
+</div>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="myModal" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Delete User</h4>
+      </div>
+      <div class="modal-body">
+        <p>      This user will be deleted and you won't be able to find it anymore. You can also edit this user, if you just want to change something.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="DeleteUser()">Delete</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

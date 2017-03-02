@@ -1,0 +1,53 @@
+<div class="container" *ngIf="user">
+
+  <div class="row">
+    <h2>Personal info</h2>
+    <hr>
+  </div>
+  <div class="row">
+  <!-- left column -->
+  <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="text-center">
+      <img [src]="'//ssl.gstatic.com/accounts/ui/avatar_2x.png'" class="avatar img-circle img-thumbnail" alt="avatar">
+      <h6 class="editLink" *ngIf="!editProfile" (click)="editProfile = true">Edit Profile</h6>
+    </div>
+  </div>
+  <!-- edit form column -->
+  <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+    <div class="alert alert-success alert-dismissable" *ngIf="dismissable">
+      <a class="panel-close close" data-dismiss="alert">×</a>
+      <i class="fa fa-coffee"></i>
+      This is an <strong>.alert</strong>. Use this to show important messages to the user.
+    </div>
+
+    <form class="form-horizontal" role="form" [formGroup]="editProfileForm" novalidate autocomplete="off" (ngSubmit)="onEditProfile()">
+
+
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Email:</label>
+        <div class="col-lg-8">
+          <label class="control-label" id="email">{{user.email}}</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Name:</label>
+        <div class="col-lg-8">
+          <label *ngIf="!editProfile"  class="control-label" id="name">{{user.name}}</label>
+          <input *ngIf="editProfile" class="form-control" type="text" [(ngModel)]="user.name" formControlName="name">
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="editProfile">
+        <label class="col-md-3 control-label"></label>
+        <div class="col-md-8">
+          <button class="btn btn-primary" [disabled]="!editProfileForm.valid" type="submit">Save Changes</button>
+          <span></span>
+          <button class="btn btn-default" (click)="editProfile = false">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  </div>
+</div>
